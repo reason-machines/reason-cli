@@ -1,0 +1,16 @@
+Reason Machines CLI - license notice
+Copyright (c) 2026 Ara Software, Inc.
+
+Reason CLI is proprietary software, not an open-source release.
+Use is governed by the Reason Machines Terms of Service:
+https://reasonmachines.com/terms-of-service
+
+Those Terms grant a limited, non-exclusive, non-transferable, revocable
+license to use the Service in accordance with the Terms, including use
+for personal or commercial projects. This notice does not replace or
+expand that agreement.
+
+Third-party components remain governed by their respective licenses.
+Nothing in this notice limits rights granted under those licenses.
+See THIRD_PARTY_NOTICES.txt and licenses included alongside runtime files.
+Licensing questions: contact@reasonmachines.com
