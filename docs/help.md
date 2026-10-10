@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.132, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.136, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
@@ -130,9 +130,12 @@ snapshot first; `--hard` stops immediately without waiting for that snapshot
 cancellation that is already in progress.
 
 A session started on this computer with `reason "PROMPT"` needs this computer
-while it works: `watch` serves its folder until it finishes, and `send`
-serves it for the follow-up, following it to its result like the prompt
-(Ctrl+C cancels, again to force stop). Keep the terminal open.
+while it works. While no other command serves its folder, `watch` serves it
+until the session finishes, and `send` serves it for the follow-up, following
+it to its result like the prompt (Ctrl+C cancels, again to force stop). Keep
+the terminal open. Watching a finished session, or one the command that
+started it still serves, only reads it; a message to such a running session
+is delivered there.
 
 `share-link` reads one https URL from standard input, so it never appears in
 shell history or the process list, and registers it with the session. The
