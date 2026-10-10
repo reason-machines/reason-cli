@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.136, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.140, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
@@ -160,7 +160,16 @@ Settings, saved; run reason connect again to change them:
   --sessions N                   Sessions at once, 1-4 (yours: 4; a machine: 1)
   --sandbox / --no-sandbox       Run confined, or with your user permissions (the default).
                                  Sandboxed computers can't host Sessions yet.
+  --proxy URL                    Reach Reason through this proxy (HTTPS_PROXY is not used)
+  --proxy-ca-file PATH           The proxy's PEM CA bundle
+  --user-chrome on|off           Let your Sessions use your own Chrome and its signed-in
+                                 profiles (macOS, with the Reason app; off by default)
+  --cloud-sessions on|off        Let your own turns in cloud Sessions use this computer's
+                                 desktop and browser (off by default)
   --yes                          Confirm without a terminal
+
+  --keep-awake on|off            macOS: keep this Mac awake while it runs Sessions (default on).
+                                 Applies at once, without reconnecting.
 
 Your computer is yours alone: it needs no machine and no admin role, and only
 you start Sessions on it (pick it as the machine in Reason). They run commands
@@ -245,13 +254,14 @@ Usage:
 
 install  Add what a worker on this computer needs for a desktop, computer use
          and browser use: pinned Node.js, Open Computer Use, Open Browser Use
-         with its browser extension, and Chrome for Testing on macOS, under
-         ~/.local/share/reason/desktop. On Debian and Ubuntu it also installs
-         the display, browser and recording packages with sudo, or prints the
-         exact command. Safe to run again.
+         with its browser extension, and on macOS Chrome for Testing and the
+         ffmpeg desktop video uses, under ~/.local/share/reason/desktop. On
+         Debian and Ubuntu it also installs the display, browser and recording
+         packages with sudo, or prints the exact command. Safe to run again.
          --permissions  macOS only. none (default): Open Computer Use asks at
                         first computer use. standard: ask now for Accessibility
-                        and Screen Recording. all: standard plus every other
+                        and Screen Recording, for Open Computer Use and for
+                        Reason's desktop video. all: standard plus every other
                         privacy pane.
 status   Show which of desktop, computer use and browser use a worker can
          serve, and each component as missing, outdated, needs_permission or
