@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.150, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.152, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
@@ -20,7 +20,7 @@ Start a session:
   reason disconnect           Stop and remove that connection
   reason serve                Share this computer as a machine, for --on NAME
   reason serve --token rmt_…  Same on any server, no login (token from `reason machines token`)
-  reason stop NAME            Stop this computer's workers for NAME
+  reason stop NAME            Stop this computer's workers for NAME (reason disconnect NAME removes them)
   reason desktop install      Add desktop, computer and browser use for this computer's workers
   reason desktop status       Show which desktop components are ready
 
@@ -152,11 +152,16 @@ Usage:
   reason connect --to NAME       Add it to team machine NAME (as reason serve NAME --service)
   reason connect --token rmt_…   Join a machine with no login (as reason serve --token … --service)
   reason connect --once          Only while this command runs; nothing is saved
+  reason connect --api-key KEY   Without reason login: a headless box, with an API key that has
+                                 devices:write (or set REASON_API_KEY, which keeps it out of ps).
+                                 The connection keeps the key to renew itself (macOS: Keychain).
   reason disconnect [NAME]       Stop and remove it (NAME: this computer's workers for machine NAME)
 
 Settings, saved; run reason connect again to change them:
   --folder PATH                  Where Sessions may run (yours: your home folder; a machine: the current folder)
   --sessions N                   Sessions at once, 1-4 (yours: 4; a machine: 1)
+  --name NAME                    This computer's name in Reason (default: its hostname)
+  --api-url URL                  The Reason API to connect to (as REASON_API_URL)
   --sandbox / --no-sandbox       Run confined, or with your user permissions (the default).
                                  Sandboxed computers can't host Sessions yet.
   --proxy URL                    Reach Reason through this proxy (HTTPS_PROXY is not used)
@@ -215,7 +220,8 @@ Options:
                a token already carries it)
   --service    Keep this worker running as a background service (see above)
   --stop       Stop this computer's running workers for NAME and remove
-               their background services
+               their background services. They stay in Reason and can
+               start again; `reason disconnect NAME` removes them.
 
 Sessions run commands in the folder with the permissions of the user who runs
 the worker unless --sandbox is set. Settings live in
@@ -279,11 +285,16 @@ Usage:
   reason connect --to NAME       Add it to team machine NAME (as reason serve NAME --service)
   reason connect --token rmt_…   Join a machine with no login (as reason serve --token … --service)
   reason connect --once          Only while this command runs; nothing is saved
+  reason connect --api-key KEY   Without reason login: a headless box, with an API key that has
+                                 devices:write (or set REASON_API_KEY, which keeps it out of ps).
+                                 The connection keeps the key to renew itself (macOS: Keychain).
   reason disconnect [NAME]       Stop and remove it (NAME: this computer's workers for machine NAME)
 
 Settings, saved; run reason connect again to change them:
   --folder PATH                  Where Sessions may run (yours: your home folder; a machine: the current folder)
   --sessions N                   Sessions at once, 1-4 (yours: 4; a machine: 1)
+  --name NAME                    This computer's name in Reason (default: its hostname)
+  --api-url URL                  The Reason API to connect to (as REASON_API_URL)
   --sandbox / --no-sandbox       Run confined, or with your user permissions (the default).
                                  Sandboxed computers can't host Sessions yet.
   --proxy URL                    Reach Reason through this proxy (HTTPS_PROXY is not used)
