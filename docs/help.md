@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.158, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.159, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
@@ -170,11 +170,10 @@ Settings, saved; run reason connect again to change them:
                                  profiles (macOS, with the Reason app; off by default)
   --cloud-sessions on|off        Let your own turns in cloud Sessions use this computer's
                                  desktop and browser (off by default)
-  --local-logins on|off          Let your Sessions run on the Claude Code, Codex and Grok
-                                 logins on this computer. Reason gets each login's current
-                                 access token, never its refresh token. Asked once at a
-                                 terminal; --yes does not answer it.
-  --yes                          Confirm without a terminal
+  --local-logins on|off          Your Sessions run on the Claude Code, Codex and Grok logins
+                                 on this computer (on by default; off with an API key).
+                                 Reason gets each login's current access token, never
+                                 its refresh token.
 
   --keep-awake on|off            macOS: keep this Mac awake while it runs Sessions (default on).
                                  Applies at once, without reconnecting.
@@ -270,6 +269,8 @@ install  Add what a worker on this computer needs for a desktop, computer use
          ffmpeg desktop video uses, under ~/.local/share/reason/desktop. On
          Debian and Ubuntu it also installs the display, browser and recording
          packages with sudo, or prints the exact command. Safe to run again.
+         When it makes a feature available, this computer's `reason connect`
+         connection restarts so its worker serves it.
          --permissions  macOS only. none (default): Open Computer Use asks at
                         first computer use. standard: ask now for Accessibility
                         and Screen Recording, for Open Computer Use and for
@@ -310,11 +311,10 @@ Settings, saved; run reason connect again to change them:
                                  profiles (macOS, with the Reason app; off by default)
   --cloud-sessions on|off        Let your own turns in cloud Sessions use this computer's
                                  desktop and browser (off by default)
-  --local-logins on|off          Let your Sessions run on the Claude Code, Codex and Grok
-                                 logins on this computer. Reason gets each login's current
-                                 access token, never its refresh token. Asked once at a
-                                 terminal; --yes does not answer it.
-  --yes                          Confirm without a terminal
+  --local-logins on|off          Your Sessions run on the Claude Code, Codex and Grok logins
+                                 on this computer (on by default; off with an API key).
+                                 Reason gets each login's current access token, never
+                                 its refresh token.
 
   --keep-awake on|off            macOS: keep this Mac awake while it runs Sessions (default on).
                                  Applies at once, without reconnecting.
