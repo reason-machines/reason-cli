@@ -1,73 +1,17 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.159, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.170, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
 ```text
-Reason CLI
+Reason
 
-Start work in your signed-in Workspace. The agent runs in Reason's cloud; its
-commands run on this computer, in Reason's cloud, or on a machine you share.
+  reason                 Open a session in this terminal
+  reason "PROMPT"        Run a task on this computer, in this folder
+  reason status          Your account and this computer's connection
 
-Start a session:
-  reason                      Open a session in this terminal and type prompts
-  reason --resume ID          Open session ID in this terminal and continue it
-  reason "PROMPT"             Run on this computer, in this folder; prints the result
-  reason "PROMPT" --cloud     Run in Reason's cloud (repo: this checkout's origin; -d to detach)
-  reason "PROMPT" --on NAME   Run on machine NAME, queued for a free worker
-  reason connect              Keep this computer connected in the background for your own Sessions
-  reason disconnect           Stop and remove that connection
-  reason serve                Share this computer as a machine, for --on NAME
-  reason serve --token rmt_…  Same on any server, no login (token from `reason machines token`)
-  reason stop NAME            Stop this computer's workers for NAME (reason disconnect NAME removes them)
-  reason desktop install      Add desktop, computer and browser use for this computer's workers
-  reason desktop status       Show which desktop components are ready
-
-  --dir PATH                  Folder on this computer (default: the current directory)
-  --yes                       Confirm running commands here without a terminal (first run only)
-  -d                          Print the Session ID and return (--cloud or --on only)
-  --repo OWNER/REPO           Cloud repository (default: this checkout's GitHub/GitLab origin)
-  --no-repo                   Cloud session without a repository
-  --update                    Update Reason first, then start on the new version
-  --model ID  --reasoning-effort LEVEL  --output-format text|json
-
-Follow and steer:
-  reason ls                   List recent sessions
-  reason watch ID             Follow a session until it finishes
-  reason send ID "MESSAGE"    Send a follow-up message
-  A session that runs on this computer uses it again for watch and send (keep the terminal open).
-  reason cancel ID [--hard]   Cancel a session (--hard: stop now, skip the final snapshot)
-
-Machines (named queues of computers):
-  reason machines             List machines, workers online, queued and running sessions
-  reason machines token NAME  Create a token that adds servers to NAME (creates NAME)
-  reason machines add NAME    Add a machine
-  reason machines rm NAME     Remove a machine and disconnect its workers
-
-Account and install:
-  reason login                Sign in to Reason in your browser
-  reason logout               Sign this machine out everywhere
-  reason whoami               Show the signed-in account and organization
-  reason status               Show account, this computer's connection, and automatic-update status
-  reason update               Install the latest Reason version
-  reason update --check       Only check (exit 10 when an update is available)
-
-Stay up to date:
-  reason update --quiet && reason "PROMPT"
-  REASON_AUTO_UPDATE=1        Update before every session (same as --update)
-  REASON_NO_UPDATE_NOTICE=1   Hide the daily "new version available" line
-
-Advanced:
-  reason run                  Scriptable run with every option (cloud by default)
-  reason session              Every session command (get, start, …)
-  reason providers            Connect an external model subscription
-  reason help                 Show this help
-
-Standard flags:
-  reason --help
-  reason --version
-
+Every command: reason help all
 Sessions and chat: https://reasonmachines.com
 ```
 
@@ -115,6 +59,8 @@ Usage:
   reason session watch SESSION_ID [--interval SECONDS] [--json]
   reason session send SESSION_ID --message TEXT [--json]
   reason session cancel SESSION_ID [--hard] [--json]
+  reason session attachments SESSION_ID [--json]
+  reason session download SESSION_ID [ATTACHMENT] [--output PATH] [--force] [--json]
   reason session share-link SESSION_ID [--label TEXT] [--expires-in SECONDS] [--json] < url
 
 Every command uses the workspace of REASON_API_KEY when set, else the one selected
@@ -136,6 +82,12 @@ the terminal open. Watching a finished session, or one the command that
 started it still serves, only reads it; a message to such a running session
 is delivered there.
 
+`attachments` lists the files a session kept (reports, patches, screenshots,
+recordings) with their ids. `download` saves one, named by its id or its
+file name, to --output (default: its own name in this folder), or every file
+into the --output folder when no ATTACHMENT is given. An existing file is kept
+unless --force is passed.
+
 `share-link` reads one https URL from standard input, so it never appears in
 shell history or the process list, and registers it with the session. The
 agent sees only the printed reason-shared-link:// reference and can open it
@@ -155,7 +107,8 @@ Usage:
   reason connect --api-key KEY   Without reason login: a headless box, with an API key that has
                                  devices:write (or set REASON_API_KEY, which keeps it out of ps).
                                  The connection keeps the key to renew itself (macOS: Keychain).
-  reason disconnect [NAME]       Stop and remove it (NAME: this computer's workers for machine NAME)
+  reason disconnect [NAME]       Stop and remove it (NAME: this computer's workers for machine NAME);
+                                 it stays disconnected until you run reason connect
 
 Settings, saved; run reason connect again to change them:
   --folder PATH                  Where Sessions may run (yours: your home folder; a machine: the current folder)
@@ -181,8 +134,8 @@ Settings, saved; run reason connect again to change them:
   --remove-folder PATH           Reason; or stop that. Applies at once; running Sessions in other
                                  folders keep running. `reason status --json` lists the folders.
 
-Your computer is yours alone: it needs no machine and no admin role, and only
-you start Sessions on it (pick it as the machine in Reason). They run commands
+Your computer is Personal: it needs no machine and no admin role, and only you
+start Sessions on it until you make it Team in Settings › Computers. They run commands
 with your user permissions unless --sandbox. It starts again at login (Linux:
 at boot, when lingering is allowed), restarts if it fails, and `reason update`
 restarts it on the new version. `reason status` shows it.
@@ -271,11 +224,11 @@ install  Add what a worker on this computer needs for a desktop, computer use
          packages with sudo, or prints the exact command. Safe to run again.
          When it makes a feature available, this computer's `reason connect`
          connection restarts so its worker serves it.
-         --permissions  macOS only. none (default): Open Computer Use asks at
-                        first computer use. standard: ask now for Accessibility
-                        and Screen Recording, for Open Computer Use and for
-                        Reason's desktop video. all: standard plus every other
-                        privacy pane.
+         --permissions  macOS only. Computer use and desktop video run as
+                        Reason and share its grants. none (default): only
+                        report missing ones. standard: ask now for
+                        Accessibility and Screen Recording for Reason. all:
+                        standard plus every other privacy pane.
 status   Show which of desktop, computer use and browser use a worker can
          serve, and each component as missing, outdated, needs_permission or
          ready.
@@ -296,7 +249,8 @@ Usage:
   reason connect --api-key KEY   Without reason login: a headless box, with an API key that has
                                  devices:write (or set REASON_API_KEY, which keeps it out of ps).
                                  The connection keeps the key to renew itself (macOS: Keychain).
-  reason disconnect [NAME]       Stop and remove it (NAME: this computer's workers for machine NAME)
+  reason disconnect [NAME]       Stop and remove it (NAME: this computer's workers for machine NAME);
+                                 it stays disconnected until you run reason connect
 
 Settings, saved; run reason connect again to change them:
   --folder PATH                  Where Sessions may run (yours: your home folder; a machine: the current folder)
@@ -322,8 +276,8 @@ Settings, saved; run reason connect again to change them:
   --remove-folder PATH           Reason; or stop that. Applies at once; running Sessions in other
                                  folders keep running. `reason status --json` lists the folders.
 
-Your computer is yours alone: it needs no machine and no admin role, and only
-you start Sessions on it (pick it as the machine in Reason). They run commands
+Your computer is Personal: it needs no machine and no admin role, and only you
+start Sessions on it until you make it Team in Settings › Computers. They run commands
 with your user permissions unless --sandbox. It starts again at login (Linux:
 at boot, when lingering is allowed), restarts if it fails, and `reason update`
 restarts it on the new version. `reason status` shows it.
