@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.140, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.150, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
@@ -61,7 +61,6 @@ Stay up to date:
 Advanced:
   reason run                  Scriptable run with every option (cloud by default)
   reason session              Every session command (get, start, …)
-  reason device               Connect this computer for approved Device work
   reason providers            Connect an external model subscription
   reason help                 Show this help
 
@@ -271,28 +270,38 @@ status   Show which of desktop, computer use and browser use a worker can
 ## reason device
 
 ```text
-Reason Device
+reason device is now reason connect.
 
-Connect this Mac to the organization selected by `reason login`.
+Connect this computer to Reason
 
 Usage:
-  reason device [--name NAME] [--no-sandbox]
+  reason connect                 Your computer, kept connected in the background
+  reason connect --to NAME       Add it to team machine NAME (as reason serve NAME --service)
+  reason connect --token rmt_…   Join a machine with no login (as reason serve --token … --service)
+  reason connect --once          Only while this command runs; nothing is saved
+  reason disconnect [NAME]       Stop and remove it (NAME: this computer's workers for machine NAME)
 
-  reason device connect [--name NAME]
-  reason device status
-  reason device disconnect
+Settings, saved; run reason connect again to change them:
+  --folder PATH                  Where Sessions may run (yours: your home folder; a machine: the current folder)
+  --sessions N                   Sessions at once, 1-4 (yours: 4; a machine: 1)
+  --sandbox / --no-sandbox       Run confined, or with your user permissions (the default).
+                                 Sandboxed computers can't host Sessions yet.
+  --proxy URL                    Reach Reason through this proxy (HTTPS_PROXY is not used)
+  --proxy-ca-file PATH           The proxy's PEM CA bundle
+  --user-chrome on|off           Let your Sessions use your own Chrome and its signed-in
+                                 profiles (macOS, with the Reason app; off by default)
+  --cloud-sessions on|off        Let your own turns in cloud Sessions use this computer's
+                                 desktop and browser (off by default)
+  --yes                          Confirm without a terminal
 
-The first run explicitly authorizes Device execution, enrolls this computer,
-and installs the background worker. Later runs show its organization,
-connection, and last real task use. Device work is confined to Reason's private
-~/.reason/workspace folder unless you explicitly attach another folder.
+  --keep-awake on|off            macOS: keep this Mac awake while it runs Sessions (default on).
+                                 Applies at once, without reconnecting.
 
-Sandboxed execution is the default. `--no-sandbox` explicitly lets Reason use
-your login shell and environment with your user account's authority.
-
-Tasks can also run through your own login shell (`/bin/zsh -lic`), so your shell
-functions and aliases work. That lane is unsandboxed; privileged commands still
-need an argv-exact sudoers entry you installed yourself.
+Your computer is yours alone: it needs no machine and no admin role, and only
+you start Sessions on it (pick it as the machine in Reason). They run commands
+with your user permissions unless --sandbox. It starts again at login (Linux:
+at boot, when lingering is allowed), restarts if it fails, and `reason update`
+restarts it on the new version. `reason status` shows it.
 ```
 
 ## reason providers
