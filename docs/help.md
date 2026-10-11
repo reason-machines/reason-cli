@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.152, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.158, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
@@ -170,10 +170,17 @@ Settings, saved; run reason connect again to change them:
                                  profiles (macOS, with the Reason app; off by default)
   --cloud-sessions on|off        Let your own turns in cloud Sessions use this computer's
                                  desktop and browser (off by default)
+  --local-logins on|off          Let your Sessions run on the Claude Code, Codex and Grok
+                                 logins on this computer. Reason gets each login's current
+                                 access token, never its refresh token. Asked once at a
+                                 terminal; --yes does not answer it.
   --yes                          Confirm without a terminal
 
   --keep-awake on|off            macOS: keep this Mac awake while it runs Sessions (default on).
                                  Applies at once, without reconnecting.
+  --add-folder PATH              Let Sessions run in another folder too, on the same computer in
+  --remove-folder PATH           Reason; or stop that. Applies at once; running Sessions in other
+                                 folders keep running. `reason status --json` lists the folders.
 
 Your computer is yours alone: it needs no machine and no admin role, and only
 you start Sessions on it (pick it as the machine in Reason). They run commands
@@ -303,10 +310,17 @@ Settings, saved; run reason connect again to change them:
                                  profiles (macOS, with the Reason app; off by default)
   --cloud-sessions on|off        Let your own turns in cloud Sessions use this computer's
                                  desktop and browser (off by default)
+  --local-logins on|off          Let your Sessions run on the Claude Code, Codex and Grok
+                                 logins on this computer. Reason gets each login's current
+                                 access token, never its refresh token. Asked once at a
+                                 terminal; --yes does not answer it.
   --yes                          Confirm without a terminal
 
   --keep-awake on|off            macOS: keep this Mac awake while it runs Sessions (default on).
                                  Applies at once, without reconnecting.
+  --add-folder PATH              Let Sessions run in another folder too, on the same computer in
+  --remove-folder PATH           Reason; or stop that. Applies at once; running Sessions in other
+                                 folders keep running. `reason status --json` lists the folders.
 
 Your computer is yours alone: it needs no machine and no admin role, and only
 you start Sessions on it (pick it as the machine in Reason). They run commands
