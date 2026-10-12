@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.176, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.195, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
@@ -53,7 +53,7 @@ Exit codes:
 Reason sessions
 
 Usage:
-  reason session list [--limit N] [--json]
+  reason session list [--limit N] [--status active|archived|all] [--origin ui|external|external:cli|external:mcp|external:api] [--json]
   reason session start --prompt TEXT [--repo OWNER/REPO --provider github|gitlab] [--model ID] [--reasoning-effort low|medium|high|xhigh] [--json]
   reason session get SESSION_ID [--json]
   reason session watch SESSION_ID [--interval SECONDS] [--json]
@@ -117,10 +117,11 @@ Settings, saved; run reason connect again to change them:
   --api-url URL                  The Reason API to connect to (as REASON_API_URL)
   --proxy URL                    Reach Reason through this proxy (HTTPS_PROXY is not used)
   --proxy-ca-file PATH           The proxy's PEM CA bundle
-  --user-chrome on|off           Let your Sessions use your own Chrome and its signed-in
-                                 profiles (macOS, after `reason desktop install`; off by default)
-  --cloud-sessions on|off        Let your own turns in cloud Sessions use this computer's
-                                 desktop and browser (off by default)
+  --user-chrome on|off           Your Sessions may use your own Chrome and its signed-in profiles
+                                 (macOS, through the Reason extension; on by default)
+  --cloud-sessions on|off        No longer needed: Reason does not read it
+  --minimal                      Keep this computer minimal: files, shell and terminal, no desktop,
+                                 computer use or browser use (reason desktop install adds them)
   --local-logins on|off          Your Sessions run on the Claude Code, Codex and Grok logins
                                  on this computer (on by default; off with an API key).
                                  Reason gets each login's current access token, never
@@ -222,21 +223,26 @@ Reason desktop
 
 Usage:
   reason desktop install [--permissions none|standard|all]
+  reason desktop minimal
   reason desktop status [--json]
 
-install  Add what a worker on this computer needs for a desktop, computer use
-         and browser use: pinned Node.js, Open Computer Use, Open Browser Use
-         with its browser extension, and on macOS Chrome for Testing and the
-         ffmpeg desktop video uses, under ~/.local/share/reason/desktop. On
-         Debian and Ubuntu it also installs the display, browser and recording
-         packages with sudo, or prints the exact command. Safe to run again.
-         When it makes a feature available, this computer's `reason connect`
-         connection restarts so its worker serves it.
-         --permissions  macOS only. Computer use and desktop video run as
-                        Reason and share its grants. none (default): only
-                        report missing ones. standard: ask now for
-                        Accessibility and Screen Recording for Reason. all:
-                        standard plus every other privacy pane.
+install  What a worker needs for a desktop, computer use and browser use; every
+         install and update sets it up unless this computer is minimal. Pinned
+         Node.js, Open Computer Use, Open Browser Use with its browser
+         extension, and on macOS Chrome for Testing, ffmpeg and ffprobe, under
+         ~/.local/share/reason/desktop. On Debian and Ubuntu it also installs
+         the display, browser and recording packages with sudo, or prints the
+         exact command. Safe to run again; undoes minimal. When it makes a
+         feature available, this computer's `reason connect` connection
+         restarts so its worker serves it.
+         --permissions  macOS only, as `reason permissions allow` without
+                        waiting. none (default): only report missing ones;
+                        macOS asks at first computer use. standard: ask for
+                        Screen Recording and Accessibility. all: standard
+                        plus Full Disk Access.
+minimal  Keep this computer minimal: files, shell and terminal only. Installs
+         and updates no longer add desktop components (an installed profile
+         stays and is kept current).
 status   Show which of desktop, computer use and browser use a worker can
          serve, and each component as missing, outdated, needs_permission or
          ready.
@@ -267,10 +273,11 @@ Settings, saved; run reason connect again to change them:
   --api-url URL                  The Reason API to connect to (as REASON_API_URL)
   --proxy URL                    Reach Reason through this proxy (HTTPS_PROXY is not used)
   --proxy-ca-file PATH           The proxy's PEM CA bundle
-  --user-chrome on|off           Let your Sessions use your own Chrome and its signed-in
-                                 profiles (macOS, after `reason desktop install`; off by default)
-  --cloud-sessions on|off        Let your own turns in cloud Sessions use this computer's
-                                 desktop and browser (off by default)
+  --user-chrome on|off           Your Sessions may use your own Chrome and its signed-in profiles
+                                 (macOS, through the Reason extension; on by default)
+  --cloud-sessions on|off        No longer needed: Reason does not read it
+  --minimal                      Keep this computer minimal: files, shell and terminal, no desktop,
+                                 computer use or browser use (reason desktop install adds them)
   --local-logins on|off          Your Sessions run on the Claude Code, Codex and Grok logins
                                  on this computer (on by default; off with an API key).
                                  Reason gets each login's current access token, never
@@ -318,8 +325,9 @@ computer. No callback URL or token needs to be copied into Reason.
 Usage: reason update [--check] [--quiet] [--json]
 
 Install the latest Reason version the way this copy was installed (signed
-managed runtime, install.sh, npm, or Bun). An installed desktop (reason desktop
-install) is then brought to that version's requirements, without prompts.
+managed runtime, install.sh, npm, or Bun). Desktop components are then
+installed or brought to that version's requirements, without prompts, unless
+this computer is minimal (reason desktop minimal).
 
 Options:
   --check    Only compare the installed and latest versions; change nothing
