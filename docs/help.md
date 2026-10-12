@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.170, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.174, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
@@ -115,12 +115,10 @@ Settings, saved; run reason connect again to change them:
   --sessions N                   Sessions at once, 1-4 (yours: 4; a machine: 1)
   --name NAME                    This computer's name in Reason (default: its hostname)
   --api-url URL                  The Reason API to connect to (as REASON_API_URL)
-  --sandbox / --no-sandbox       Run confined, or with your user permissions (the default).
-                                 Sandboxed computers can't host Sessions yet.
   --proxy URL                    Reach Reason through this proxy (HTTPS_PROXY is not used)
   --proxy-ca-file PATH           The proxy's PEM CA bundle
   --user-chrome on|off           Let your Sessions use your own Chrome and its signed-in
-                                 profiles (macOS, with the Reason app; off by default)
+                                 profiles (macOS, after `reason desktop install`; off by default)
   --cloud-sessions on|off        Let your own turns in cloud Sessions use this computer's
                                  desktop and browser (off by default)
   --local-logins on|off          Your Sessions run on the Claude Code, Codex and Grok logins
@@ -136,9 +134,19 @@ Settings, saved; run reason connect again to change them:
 
 Your computer is Personal: it needs no machine and no admin role, and only you
 start Sessions on it until you make it Team in Settings › Computers. They run commands
-with your user permissions unless --sandbox. It starts again at login (Linux:
+with your user permissions (there is no sandbox mode). It starts again at login (Linux:
 at boot, when lingering is allowed), restarts if it fails, and `reason update`
 restarts it on the new version. `reason status` shows it.
+
+It is connected in the workspace you signed in to. It is also connected, by
+itself, in up to 8 other workspaces you belong to, as each one's own computer,
+when this computer was signed in with the setup command Reason shows you (it
+ends in --pair CODE, a one-time code from your signed-in Reason) or by the
+Reason app, and was connected after that. Signed in with `reason login`
+alone, or connected with --api-key or --once, it stays in the one workspace:
+run the setup command from Reason here, then `reason disconnect` and
+`reason connect` if it was connected before. One sign-in covers one computer;
+a second computer needs its own. `reason status` says when this applies.
 ```
 
 ## reason serve
@@ -257,12 +265,10 @@ Settings, saved; run reason connect again to change them:
   --sessions N                   Sessions at once, 1-4 (yours: 4; a machine: 1)
   --name NAME                    This computer's name in Reason (default: its hostname)
   --api-url URL                  The Reason API to connect to (as REASON_API_URL)
-  --sandbox / --no-sandbox       Run confined, or with your user permissions (the default).
-                                 Sandboxed computers can't host Sessions yet.
   --proxy URL                    Reach Reason through this proxy (HTTPS_PROXY is not used)
   --proxy-ca-file PATH           The proxy's PEM CA bundle
   --user-chrome on|off           Let your Sessions use your own Chrome and its signed-in
-                                 profiles (macOS, with the Reason app; off by default)
+                                 profiles (macOS, after `reason desktop install`; off by default)
   --cloud-sessions on|off        Let your own turns in cloud Sessions use this computer's
                                  desktop and browser (off by default)
   --local-logins on|off          Your Sessions run on the Claude Code, Codex and Grok logins
@@ -278,9 +284,19 @@ Settings, saved; run reason connect again to change them:
 
 Your computer is Personal: it needs no machine and no admin role, and only you
 start Sessions on it until you make it Team in Settings › Computers. They run commands
-with your user permissions unless --sandbox. It starts again at login (Linux:
+with your user permissions (there is no sandbox mode). It starts again at login (Linux:
 at boot, when lingering is allowed), restarts if it fails, and `reason update`
 restarts it on the new version. `reason status` shows it.
+
+It is connected in the workspace you signed in to. It is also connected, by
+itself, in up to 8 other workspaces you belong to, as each one's own computer,
+when this computer was signed in with the setup command Reason shows you (it
+ends in --pair CODE, a one-time code from your signed-in Reason) or by the
+Reason app, and was connected after that. Signed in with `reason login`
+alone, or connected with --api-key or --once, it stays in the one workspace:
+run the setup command from Reason here, then `reason disconnect` and
+`reason connect` if it was connected before. One sign-in covers one computer;
+a second computer needs its own. `reason status` says when this applies.
 ```
 
 ## reason providers
