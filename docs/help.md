@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.221, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.244, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
@@ -62,6 +62,8 @@ Usage:
   reason session attachments SESSION_ID [--json]
   reason session download SESSION_ID [ATTACHMENT] [--output PATH] [--force] [--json]
   reason session share-link SESSION_ID [--label TEXT] [--expires-in SECONDS] [--json] < url
+
+--output-format json is the same as --json.
 
 Every command uses the workspace of REASON_API_KEY when set, else the one selected
 at `reason login`. Reason does not accept an organization override, another
