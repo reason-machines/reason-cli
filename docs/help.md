@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.244, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.254, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
@@ -150,6 +150,11 @@ alone, or connected with --api-key or --once, it stays in the one workspace:
 run the setup command from Reason here, then `reason disconnect` and
 `reason connect` if it was connected before. One sign-in covers one computer;
 a second computer needs its own. `reason status` says when this applies.
+
+One computer serves several Reason accounts. Signed in as another account than
+the one it is connected for, reason connect connects it for that account too,
+as that account's own computer in the workspace it signed in to; the other
+accounts stay connected. That account's `reason logout` removes only its own.
 ```
 
 ## reason serve
@@ -306,6 +311,11 @@ alone, or connected with --api-key or --once, it stays in the one workspace:
 run the setup command from Reason here, then `reason disconnect` and
 `reason connect` if it was connected before. One sign-in covers one computer;
 a second computer needs its own. `reason status` says when this applies.
+
+One computer serves several Reason accounts. Signed in as another account than
+the one it is connected for, reason connect connects it for that account too,
+as that account's own computer in the workspace it signed in to; the other
+accounts stay connected. That account's `reason logout` removes only its own.
 ```
 
 ## reason providers
