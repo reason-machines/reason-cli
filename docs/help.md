@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.261, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.278, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
@@ -232,6 +232,8 @@ Usage:
   reason desktop install [--permissions none|standard|all]
   reason desktop minimal
   reason desktop status [--json]
+  reason desktop browser-use [--json]
+  reason desktop mentions --json
 
 install  What a worker needs for a desktop, computer use and browser use; every
          install and update sets it up unless this computer is minimal. Pinned
@@ -253,6 +255,11 @@ minimal  Keep this computer minimal: files, shell and terminal only. Installs
 status   Show which of desktop, computer use and browser use a worker can
          serve, and each component as missing, outdated, needs_permission or
          ready.
+browser-use
+         macOS: whether browser use in your own Chrome is ready (a profile
+         has Reason's Chrome extension connected), needs_setup or unavailable.
+mentions What Sessions on this Mac can mention: running apps and the tabs of
+         Chrome profiles connected to Reason. Reads no page contents.
 ```
 
 ## reason device
