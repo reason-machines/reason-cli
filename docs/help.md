@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.335, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.342, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
@@ -114,7 +114,7 @@ Usage:
 
 Settings, saved; run reason connect again to change them:
   --folder PATH                  Where Sessions may run (yours: your home folder; a machine: the current folder)
-  --sessions N                   Sessions at once, 1-4 (yours: 4; a machine: 1)
+  --sessions N                   No longer needed: your computer runs every Session you start
   --name NAME                    This computer's name in Reason (default: its hostname)
   --api-url URL                  The Reason API to connect to (as REASON_API_URL)
   --proxy URL                    Reach Reason through this proxy (HTTPS_PROXY is not used)
@@ -282,7 +282,7 @@ Usage:
 
 Settings, saved; run reason connect again to change them:
   --folder PATH                  Where Sessions may run (yours: your home folder; a machine: the current folder)
-  --sessions N                   Sessions at once, 1-4 (yours: 4; a machine: 1)
+  --sessions N                   No longer needed: your computer runs every Session you start
   --name NAME                    This computer's name in Reason (default: its hostname)
   --api-url URL                  The Reason API to connect to (as REASON_API_URL)
   --proxy URL                    Reach Reason through this proxy (HTTPS_PROXY is not used)
