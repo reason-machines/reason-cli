@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.342, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.355, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
@@ -331,11 +331,21 @@ accounts stay connected. That account's `reason logout` removes only its own.
 Reason providers
 
 Usage:
-  reason providers connect anthropic [--pair CODE]
+  reason providers connect anthropic [--pair CODE] [--browser]
 
-Connect a Claude Pro or Max subscription to the current Reason workspace. Reason
-opens Anthropic in your browser and receives the localhost callback on this
-computer. No callback URL or token needs to be copied into Reason.
+Connect a Claude Pro or Max subscription to the current Reason workspace.
+
+Where your workspace has it on (it is rolling out) and Claude Code is
+installed, Reason signs in with Claude Code's own
+`claude setup-token`, run out of sight with a config folder of its own, so
+your Claude Code login is never read or changed. claude.ai opens in your
+browser; sign in to the Claude account to connect. If claude.ai shows a code
+instead of finishing, paste it here. Reason saves the long-lived token it makes.
+
+Without Claude Code, or with --browser, Reason opens Anthropic in your browser
+and receives the localhost callback on this computer. That sign-in can be
+refreshed and shows the subscription's usage in Reason; Claude Code's token
+can't show usage.
 ```
 
 ## reason update
