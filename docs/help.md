@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.380, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.387, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
@@ -238,8 +238,8 @@ Usage:
 install  What a worker needs for a desktop, computer use and browser use; every
          install and update sets it up unless this computer is minimal. Pinned
          Node.js, Open Computer Use, Open Browser Use with its browser
-         extension, and on macOS Chrome for Testing, ffmpeg and ffprobe, under
-         ~/.local/share/reason/desktop. On Debian and Ubuntu it also installs
+         extension, and on macOS and Windows Chrome for Testing, ffmpeg and
+         ffprobe, under ~/.local/share/reason/desktop. On Debian and Ubuntu it also installs
          the display, browser and recording packages with sudo, or prints the
          exact command. Safe to run again; undoes minimal. When it makes a
          feature available, this computer's `reason connect` connection
