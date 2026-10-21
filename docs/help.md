@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.499, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.508, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
@@ -53,7 +53,7 @@ Exit codes:
 Reason sessions
 
 Usage:
-  reason session list [--limit N] [--status active|archived|all] [--origin ui|external|external:cli|external:mcp|external:api] [--json]
+  reason session list [--limit N] [--status active|archived|all] [--origin ui|external|external:cli|external:mcp|external:api] [--fields NAMES] [--json]
   reason session start --prompt TEXT [--repo OWNER/REPO --provider github|gitlab] [--model ID] [--reasoning-effort low|medium|high|xhigh] [--json]
   reason session get SESSION_ID [--json]
   reason session watch SESSION_ID [--interval SECONDS] [--json]
@@ -64,6 +64,13 @@ Usage:
   reason session share-link SESSION_ID [--label TEXT] [--expires-in SECONDS] [--json] < url
 
 --output-format json is the same as --json.
+
+`session list --fields title,status,finished_at` lists only those properties
+of each Session, after its session_id. Made for polling: the last page is kept
+beside the login, and the server answers that it is unchanged without reading
+the list again until a listed property, or who can see a Session, changes; the
+page printed is at most 5 minutes old (10 seconds with usage, context, cost_usd,
+duration_ms or model).
 
 Every command uses the workspace of REASON_API_KEY when set, else the one selected
 at `reason login`. Reason does not accept an organization override, another
