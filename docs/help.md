@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.537, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.541, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
@@ -339,6 +339,7 @@ Reason providers
 
 Usage:
   reason providers connect anthropic [--pair CODE] [--browser]
+  reason providers connect anthropic --token-stdin < token.txt
 
 Connect a Claude Pro or Max subscription to the current Reason workspace.
 
@@ -353,6 +354,10 @@ Without Claude Code, or with --browser, Reason opens Anthropic in your browser
 and receives the localhost callback on this computer. That sign-in can be
 refreshed and shows the subscription's usage in Reason; Claude Code's token
 can't show usage.
+
+With --token-stdin, Reason saves a token you already made with
+`claude setup-token` (sk-ant-oat...), read from standard input, as a new
+account instead of signing in. Run it once per token to add several accounts.
 ```
 
 ## reason update
