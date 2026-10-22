@@ -1,18 +1,18 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.508, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.514, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
 ```text
 Reason
 
-  reason                 Open a session in this terminal
   reason "PROMPT"        Run a task on this computer, in this folder
   reason status          Your account and this computer's connection
 
 Every command: reason help all
 Sessions and chat: https://reasonmachines.com
+Desktop app: https://reasonmachines.com/download
 ```
 
 ## reason run
