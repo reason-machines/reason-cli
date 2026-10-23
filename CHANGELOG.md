@@ -10,5 +10,5 @@ Reason CLI ships often, usually several times a week. Every version is published
 To pin a release with npm, append its version:
 
 ```sh
-npm install -g @reason-machines/cli@0.2.544
+npm install -g @reason-machines/cli@0.2.546
 ```
