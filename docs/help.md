@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.557, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.560, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
@@ -243,7 +243,8 @@ Usage:
   reason desktop mentions --json
 
 install  What a worker needs for a desktop, computer use and browser use; every
-         install and update sets it up unless this computer is minimal. Pinned
+         install and update sets it up unless this computer is minimal or only
+         on Reason Network (installed with `install.sh … network`, no worker). Pinned
          Node.js, Open Computer Use, Open Browser Use with its browser
          extension, and on macOS and Windows Chrome for Testing, ffmpeg and
          ffprobe, under ~/.local/share/reason/desktop. On Debian and Ubuntu it also installs
@@ -368,7 +369,8 @@ Usage: reason update [--check] [--quiet] [--json]
 Install the latest Reason version the way this copy was installed (signed
 managed runtime, install.sh, npm, or Bun). Desktop components are then
 installed or brought to that version's requirements, without prompts, unless
-this computer is minimal (reason desktop minimal).
+this computer is minimal (reason desktop minimal) or is only on Reason Network
+(installed with `install.sh … network`, running no worker).
 
 Options:
   --check    Only compare the installed and latest versions; change nothing
