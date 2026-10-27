@@ -1,6 +1,6 @@
 # Command reference
 
-Taken from the help output of Reason CLI 0.2.618. Run `reason --help`, or `--help` after any command, for the version you have installed; [help.md](help.md) has every help page as published.
+Taken from the help output of Reason CLI 0.2.621. Run `reason --help`, or `--help` after any command, for the version you have installed; [help.md](help.md) has every help page as published.
 
 - [Start a session](#start-a-session)
 - [Follow and steer](#follow-and-steer)
