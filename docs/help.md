@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.636, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.638, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
@@ -38,6 +38,11 @@ Ctrl+C again to force stop it immediately, without that snapshot, and exit.
 Authentication:
   Interactive machines use the Workspace selected by reason login.
   CI can set REASON_API_KEY. Set REASON_API_URL only for a non-production endpoint.
+
+When the server requires cloud activation, an interactive terminal opens Reason's
+web page and waits up to 15 minutes, then retries the refused submission once.
+Headless and JSON callers receive action_required with activation_url (exit 3).
+Checkout and payment confirmation stay on the web; Ctrl+C cancels the wait.
 
 Exit codes:
   0  success (or a detached Session was accepted)
