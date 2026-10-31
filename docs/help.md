@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.644, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.648, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
@@ -21,8 +21,15 @@ Desktop app: https://reasonmachines.com/download
 Run Reason noninteractively
 
 Usage:
+  reason run "TASK" [--wait] [--json] [--repo OWNER/REPO] [--ref GIT_REF]
   reason run --task TEXT [--repo OWNER/REPO] [--ref GIT_REF]
           [--model ID] [--reasoning-effort low|medium|high|xhigh] [--output-format text|json] [--detach]
+
+`reason run "TASK" --wait --json` is the one call for an agent: it starts a
+cloud Session, waits, and prints one JSON object with session_id, status,
+outcome, result, pr_url and url. --wait is the default; --json is
+--output-format json. Without --repo the Session has no repository: pass the
+repository the task is about. Follow up with `reason steer|queue|resume ID`.
 
 By default, starts a cloud Session and waits for its outcome (this stays so
 for scripts; the short `reason "PROMPT"` runs on this computer). --detach returns
@@ -62,7 +69,10 @@ Usage:
   reason session start --prompt TEXT [--repo OWNER/REPO --provider github|gitlab] [--model ID] [--reasoning-effort low|medium|high|xhigh] [--json]
   reason session get SESSION_ID [--json]
   reason session watch SESSION_ID [--interval SECONDS] [--json]
-  reason session send SESSION_ID --message TEXT [--json]
+  reason session send SESSION_ID [--message] TEXT [--queue] [--wait] [--json]
+  reason session steer SESSION_ID TEXT [--wait] [--json]
+  reason session queue SESSION_ID TEXT [--wait] [--json]
+  reason session resume SESSION_ID [TEXT] [--wait] [--json]
   reason session cancel SESSION_ID [--hard] [--json]
   reason session attachments SESSION_ID [--json]
   reason session download SESSION_ID [ATTACHMENT] [--output PATH] [--force] [--json]
@@ -95,6 +105,14 @@ it to its result like the prompt (Ctrl+C cancels, again to force stop). Keep
 the terminal open. Watching a finished session, or one the command that
 started it still serves, only reads it; a message to such a running session
 is delivered there.
+
+`send` hands the message to the running turn now (`reason steer`), or starts the
+next turn of a finished session. `--queue` (`reason queue`) holds it until the
+running turn ends instead; the printed message_id is the queued message.
+`resume` (`reason resume`) continues a finished, failed or stopped session:
+with --message as its next turn, without it by running its last turn again.
+`--wait` follows the session until that turn ends and prints its result, the
+same output and exit codes as `reason run`.
 
 `attachments` lists the files a session kept (reports, patches, screenshots,
 recordings) with their ids. `download` saves one, named by its id or its
