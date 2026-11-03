@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.665, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.667, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
@@ -111,8 +111,10 @@ next turn of a finished session. `--queue` (`reason queue`) holds it until the
 running turn ends instead; the printed message_id is the queued message.
 `resume` (`reason resume`) continues a finished, failed or stopped session:
 with --message as its next turn, without it by running its last turn again.
-`--wait` follows the session until that turn ends and prints its result, the
-same output and exit codes as `reason run`.
+`--wait` observes accepted delivery and execution, then prints the Session's
+latest outcome. Concurrent steers share that Session. If the restart or message
+delivery cannot be confirmed within the observation grace, it exits 2 with
+status unconfirmed and no result; accepted work is not cancelled or resubmitted.
 
 `attachments` lists the files a session kept (reports, patches, screenshots,
 recordings) with their ids. `download` saves one, named by its id or its
