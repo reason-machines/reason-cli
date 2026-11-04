@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.670, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.671, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
@@ -9,6 +9,7 @@ Reason
 
   reason "PROMPT"        Run a task on this computer, in this folder
   reason status          Your account and this computer's connection
+  --workspace SLUG|ID    Use a signed-in Workspace (default: desktop selection)
 
 Every command: reason help all
 Sessions and chat: https://reasonmachines.com
