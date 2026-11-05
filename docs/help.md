@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.678, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.681, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
@@ -9,11 +9,16 @@ Reason
 
   reason "PROMPT"        Run a task on this computer, in this folder
   reason status          Your account and this computer's connection
-  --workspace SLUG|ID    Use a signed-in Workspace (default: desktop selection)
+  --workspace SLUG|ID    Use a signed-in Workspace (or REASON_WORKSPACE; default: desktop selection)
 
 Every command: reason help all
 Sessions and chat: https://reasonmachines.com
 Desktop app: https://reasonmachines.com/download
+
+Building an app or editor on Reason? https://docs.reasonmachines.com/docs/build/editor-app-acp
+  (agents: https://reasonmachines.com/llms.txt)
+  Use one provider: reason --workspace SLUG acp -y
+  The Session reaches Reason cloud computers itself (no separate cloud provider).
 ```
 
 ## reason run
