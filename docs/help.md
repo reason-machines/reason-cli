@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.693, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.696, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
@@ -11,10 +11,10 @@ Usage: reason "PROMPT" [options]
   reason status          Show your account and this computer's connection
 
 Options:
-  --workspace SLUG|ID    Use a signed-in Workspace (or REASON_WORKSPACE; default: desktop selection)
+  --workspace SLUG|ID    Use a signed-in Workspace (or REASON_WORKSPACE)
 
 Every command: reason help all
-Sessions and chat: https://reasonmachines.com (desktop app: https://reasonmachines.com/download)
+Sessions and chat: https://reasonmachines.com
 Build an app or editor on Reason (agents: https://reasonmachines.com/llms.txt):
   https://docs.reasonmachines.com/docs/build/editor-app-acp
 ```
@@ -77,7 +77,7 @@ Usage:
   reason session steer SESSION_ID TEXT [--wait] [--json]
   reason session queue SESSION_ID TEXT [--wait] [--json]
   reason session resume SESSION_ID [TEXT] [--wait] [--json]
-  reason session cancel SESSION_ID [--hard] [--json]
+  reason session cancel SESSION_ID [--hard] [--yes] [--json]
   reason session attachments SESSION_ID [--json]
   reason session download SESSION_ID [ATTACHMENT] [--output PATH] [--force] [--json]
   reason session share-link SESSION_ID [--label TEXT] [--expires-in SECONDS] [--json] < url
@@ -203,7 +203,7 @@ Usage:
   reason serve --token rmt_…       Any server, no login: the token names the machine
   reason serve NAME [--dir PATH] [--once] [--sandbox] [--yes]
   reason serve [NAME | --token rmt_…] [--dir PATH] --service
-  reason serve NAME --stop [--json]  (same as: reason stop NAME)
+  reason serve NAME --stop [--yes] [--json]  (same as: reason stop NAME)
 
 Adds this computer as a worker of a machine and waits for sessions. Start one
 from anywhere with: reason "fix the flaky test" --on NAME
