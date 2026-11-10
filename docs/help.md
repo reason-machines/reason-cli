@@ -1,6 +1,6 @@
 # Help output
 
-The `--help` pages of Reason CLI 0.2.724, generated from the published package. The [command reference](commands.md) explains them with examples.
+The `--help` pages of Reason CLI 0.2.726, generated from the published package. The [command reference](commands.md) explains them with examples.
 
 ## reason
 
